@@ -515,6 +515,12 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     >;
     publishedAt: Schema.Attribute.DateTime;
     section: Schema.Attribute.Relation<'manyToOne', 'api::section.section'>;
+    seo: Schema.Attribute.Component<'seo.seo', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     slug: Schema.Attribute.UID<'title'> &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
