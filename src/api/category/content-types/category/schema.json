@@ -64,10 +64,10 @@
       "target": "api::section.section",
       "inversedBy": "categories"
     },
-    "subcategories": {
+    "articles": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::subcategory.subcategory",
+      "target": "api::article.article",
       "mappedBy": "category"
     }
   }

@@ -52,6 +52,12 @@
       },
       "required": true,
       "default": true
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::article.article",
+      "mappedBy": "tags"
     }
   }
 }
