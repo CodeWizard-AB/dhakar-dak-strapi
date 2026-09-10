@@ -515,7 +515,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     >;
     publishedAt: Schema.Attribute.DateTime;
     section: Schema.Attribute.Relation<'manyToOne', 'api::section.section'>;
-    seo: Schema.Attribute.Component<'seo.seo', true> &
+    seo: Schema.Attribute.Component<'seo.seo', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -523,6 +523,12 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
       }>;
     slug: Schema.Attribute.UID<'title'> &
       Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    source: Schema.Attribute.Component<'article.source', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

@@ -128,7 +128,17 @@
         }
       },
       "component": "seo.seo",
-      "repeatable": true
+      "repeatable": false
+    },
+    "source": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "article.source",
+      "repeatable": false
     }
   }
 }

@@ -1,5 +1,16 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ArticleSource extends Struct.ComponentSchema {
+  collectionName: 'components_article_sources';
+  info: {
+    displayName: 'source';
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+    url: Schema.Attribute.String;
+  };
+}
+
 export interface SeoSeo extends Struct.ComponentSchema {
   collectionName: 'components_seo_seos';
   info: {
@@ -19,6 +30,7 @@ export interface SeoSeo extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export namespace Public {
     export interface ComponentSchemas {
+      'article.source': ArticleSource;
       'seo.seo': SeoSeo;
     }
   }
