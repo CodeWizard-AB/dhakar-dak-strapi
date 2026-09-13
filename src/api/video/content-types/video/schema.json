@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "articles",
+  "collectionName": "videos",
   "info": {
-    "singularName": "article",
-    "pluralName": "articles",
-    "displayName": "Article"
+    "singularName": "video",
+    "pluralName": "videos",
+    "displayName": "Video"
   },
   "options": {
     "draftAndPublish": true
@@ -22,7 +22,8 @@
           "localized": true
         }
       },
-      "required": true
+      "required": true,
+      "unique": true
     },
     "slug": {
       "type": "uid",
@@ -34,7 +35,7 @@
       "targetField": "title",
       "required": true
     },
-    "excerpt": {
+    "description": {
       "type": "text",
       "pluginOptions": {
         "i18n": {
@@ -42,16 +43,7 @@
         }
       }
     },
-    "content": {
-      "type": "blocks",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "required": true
-    },
-    "coverImage": {
+    "video": {
       "type": "media",
       "pluginOptions": {
         "i18n": {
@@ -59,7 +51,7 @@
         }
       },
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
@@ -67,7 +59,30 @@
         "audios"
       ]
     },
-    "imageCaption": {
+    "thumbnail": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "sourceUrl": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "caption": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
@@ -75,7 +90,7 @@
         }
       }
     },
-    "isBreaking": {
+    "isFeatured": {
       "type": "boolean",
       "pluginOptions": {
         "i18n": {
@@ -85,7 +100,7 @@
       "required": true,
       "default": false
     },
-    "isFeatured": {
+    "isBreaking": {
       "type": "boolean",
       "pluginOptions": {
         "i18n": {
@@ -99,57 +114,25 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::author.author",
-      "inversedBy": "articles"
+      "inversedBy": "videos"
     },
     "section": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::section.section",
-      "inversedBy": "articles"
+      "inversedBy": "videos"
     },
     "category": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::category.category",
-      "inversedBy": "articles"
-    },
-    "division": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::division.division",
-      "inversedBy": "articles"
-    },
-    "district": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::district.district",
-      "inversedBy": "articles"
+      "inversedBy": "videos"
     },
     "tags": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::tag.tag",
-      "inversedBy": "articles"
-    },
-    "seo": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "seo.seo",
-      "repeatable": false
-    },
-    "source": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "article.source",
-      "repeatable": false
+      "inversedBy": "videos"
     }
   }
 }
