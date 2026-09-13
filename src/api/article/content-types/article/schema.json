@@ -114,6 +114,18 @@
       "target": "api::category.category",
       "inversedBy": "articles"
     },
+    "division": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::division.division",
+      "inversedBy": "articles"
+    },
+    "district": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::district.district",
+      "inversedBy": "articles"
+    },
     "tags": {
       "type": "relation",
       "relation": "manyToMany",
