@@ -692,6 +692,7 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
           localized: false;
         };
       }>;
+    galleries: Schema.Attribute.Relation<'oneToMany', 'api::gallery.gallery'>;
     isActive: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -758,6 +759,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    galleries: Schema.Attribute.Relation<'oneToMany', 'api::gallery.gallery'>;
     isActive: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -935,6 +937,101 @@ export interface ApiEPaperEPaper extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiGalleryGallery extends Struct.CollectionTypeSchema {
+  collectionName: 'galleries';
+  info: {
+    displayName: 'Gallery';
+    pluralName: 'galleries';
+    singularName: 'gallery';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
+    caption: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
+    coverImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    images: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    isBreaking: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<false>;
+    isFeatured: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<false>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::gallery.gallery'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    section: Schema.Attribute.Relation<'manyToOne', 'api::section.section'>;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    tags: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPagePage extends Struct.CollectionTypeSchema {
   collectionName: 'pages';
   info: {
@@ -1042,6 +1139,7 @@ export interface ApiSectionSection extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    galleries: Schema.Attribute.Relation<'oneToMany', 'api::gallery.gallery'>;
     isActive: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -1111,6 +1209,7 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    galleries: Schema.Attribute.Relation<'manyToMany', 'api::gallery.gallery'>;
     isActive: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -1757,6 +1856,7 @@ declare module '@strapi/strapi' {
       'api::district.district': ApiDistrictDistrict;
       'api::division.division': ApiDivisionDivision;
       'api::e-paper.e-paper': ApiEPaperEPaper;
+      'api::gallery.gallery': ApiGalleryGallery;
       'api::page.page': ApiPagePage;
       'api::section.section': ApiSectionSection;
       'api::tag.tag': ApiTagTag;

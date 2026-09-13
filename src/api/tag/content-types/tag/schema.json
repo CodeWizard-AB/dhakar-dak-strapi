@@ -64,6 +64,12 @@
       "relation": "manyToMany",
       "target": "api::video.video",
       "mappedBy": "tags"
+    },
+    "galleries": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::gallery.gallery",
+      "mappedBy": "tags"
     }
   }
 }
