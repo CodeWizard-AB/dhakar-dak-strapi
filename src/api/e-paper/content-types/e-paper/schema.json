@@ -54,6 +54,11 @@
     "isFeatured": {
       "type": "boolean",
       "required": false
+    },
+    "pages": {
+      "type": "component",
+      "component": "epaper.page",
+      "repeatable": true
     }
   }
 }

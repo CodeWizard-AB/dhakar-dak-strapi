@@ -11,6 +11,18 @@ export interface ArticleSource extends Struct.ComponentSchema {
   };
 }
 
+export interface EpaperPage extends Struct.ComponentSchema {
+  collectionName: 'components_epaper_pages';
+  info: {
+    displayName: 'page';
+  };
+  attributes: {
+    caption: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    pageNumber: Schema.Attribute.Integer & Schema.Attribute.Required;
+  };
+}
+
 export interface SeoSeo extends Struct.ComponentSchema {
   collectionName: 'components_seo_seos';
   info: {
@@ -31,6 +43,7 @@ declare module '@strapi/strapi' {
   export namespace Public {
     export interface ComponentSchemas {
       'article.source': ArticleSource;
+      'epaper.page': EpaperPage;
       'seo.seo': SeoSeo;
     }
   }

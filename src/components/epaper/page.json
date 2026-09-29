@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_epaper_pages",
+  "info": {
+    "displayName": "page"
+  },
+  "options": {},
+  "attributes": {
+    "pageNumber": {
+      "type": "integer",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "caption": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

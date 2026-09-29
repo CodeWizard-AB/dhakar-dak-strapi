@@ -926,6 +926,7 @@ export interface ApiEPaperEPaper extends Struct.CollectionTypeSchema {
       'api::e-paper.e-paper'
     > &
       Schema.Attribute.Private;
+    pages: Schema.Attribute.Component<'epaper.page', true>;
     pdf: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
